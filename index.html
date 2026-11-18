@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>白叶零售 · 手机端下载</title>
+<meta name="description" content="白叶零售数字化管理：老板端、员工端 Android 安装包，点开即下载。">
+<meta name="theme-color" content="#153D32">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23153D32'/%3E%3Cpath d='M32 14c8 4 14 11 14 20 0 8-6 14-14 16-8-2-14-8-14-16 0-9 6-16 14-20z' fill='%23C38A38'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --forest:#153D32; --forest-deep:#0B2821; --sage:#7A9885;
+    --cream:#F4EFE4; --paper:#FCF9F2; --ink:#1D2A24; --muted:#78847C;
+    --gold:#C38A38; --gold-soft:#F1E2C4; --line:#E3DCCD;
+    --radius:22px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--cream); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+    padding:18px 18px 56px; max-width:640px; margin:0 auto;
+  }
+  a{color:inherit}
+  .brand{display:flex;align-items:center;gap:12px;margin:8px 2px 18px}
+  .brand .leaf{
+    width:46px;height:46px;border-radius:14px;background:var(--forest);
+    display:flex;align-items:center;justify-content:center;flex:0 0 auto;
+  }
+  .brand .leaf svg{width:26px;height:26px}
+  .brand h1{font-size:20px;margin:0;letter-spacing:.2px}
+  .brand p{margin:2px 0 0;font-size:12px;color:var(--muted)}
+
+  .hero{
+    background:linear-gradient(160deg,var(--forest) 0%,var(--forest-deep) 100%);
+    color:#F6EDDB;border-radius:26px;padding:24px 22px;margin-bottom:18px;
+    box-shadow:0 18px 40px -24px rgba(11,40,33,.75);
+  }
+  .hero .tag{
+    font-size:11px;letter-spacing:.22em;color:var(--gold);
+    font-weight:700;margin-bottom:12px;
+  }
+  .hero h2{margin:0;font-size:30px;line-height:1.28;font-weight:800;letter-spacing:-.3px}
+  .hero p{margin:12px 0 0;font-size:13.5px;color:#D9CDB6}
+
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px;margin-bottom:14px;
+  }
+  .app{display:flex;align-items:flex-start;gap:14px}
+  .app .icon{
+    width:52px;height:52px;border-radius:16px;flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;
+    background:#EAEFE6;color:var(--forest);
+  }
+  .app .icon svg{width:26px;height:26px}
+  .app .meta{flex:1;min-width:0}
+  .app h3{margin:0;font-size:17px;font-weight:800;letter-spacing:.2px}
+  .app .sub{margin:2px 0 0;font-size:12.5px;color:var(--muted)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .chip{
+    font-size:11px;padding:3px 9px;border-radius:999px;
+    background:var(--gold-soft);color:#8A6321;font-weight:600;
+  }
+  .chip.gray{background:#EFF1EC;color:#5C6A61;font-weight:500}
+
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:9px;
+    width:100%;margin-top:16px;padding:15px 18px;border-radius:18px;
+    background:var(--forest);color:#F6EDDB;text-decoration:none;
+    font-size:16px;font-weight:800;letter-spacing:.3px;
+    box-shadow:0 12px 24px -16px rgba(11,40,33,.9);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:active{transform:translateY(1px) scale(.995);box-shadow:none}
+  .btn.ghost{background:transparent;color:var(--forest);border:1.5px solid var(--line);box-shadow:none;font-weight:700}
+  .btn svg{width:20px;height:20px}
+  .btn small{font-weight:600;opacity:.75;font-size:12px}
+
+  .note{font-size:12.5px;color:var(--muted);margin:10px 2px 0}
+  .steps{counter-reset:s;margin:6px 0 0;padding:0;list-style:none}
+  .steps li{
+    counter-increment:s;position:relative;padding-left:30px;margin:10px 0;
+    font-size:13.5px;
+  }
+  .steps li::before{
+    content:counter(s);position:absolute;left:0;top:1px;
+    width:20px;height:20px;border-radius:999px;background:var(--forest);color:#F6EDDB;
+    font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center;
+  }
+  h4.section{
+    font-size:13px;letter-spacing:.16em;color:var(--sage);
+    margin:22px 2px 10px;font-weight:700;
+  }
+  .row{display:flex;justify-content:space-between;gap:12px;font-size:13px;padding:7px 0}
+  .row + .row{border-top:1px solid var(--line)}
+  .row .k{color:var(--muted)}
+  .row .v{font-weight:600;text-align:right;word-break:break-all}
+  footer{margin-top:26px;font-size:11.5px;color:var(--muted);text-align:center;line-height:1.8}
+  footer a{color:var(--sage);text-decoration:none;border-bottom:1px dotted var(--line)}
+</style>
+</head>
+<body>
+
+<div class="brand">
+  <div class="leaf">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 3c4.5 2.4 7 6.4 7 11 0 4.4-3.1 7-7 7s-7-2.6-7-7c0-4.6 2.5-8.6 7-11z" fill="#C38A38"/><path d="M12 8v9" stroke="#153D32" stroke-width="1.6" stroke-linecap="round"/></svg>
+  </div>
+  <div>
+    <h1>白叶零售 · 手机端</h1>
+    <p>老板端 / 员工端 Android 安装包</p>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="tag">DESCARGAS · 下载</div>
+  <h2>点一下，<br>直接装到手机上。</h2>
+  <p>不用注册、不用找文件夹。下载好点开，允许安装未知来源即可覆盖安装，本机数据保留。</p>
+</div>
+
+<div class="card">
+  <div class="app">
+    <div class="icon">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M3 11h18" stroke="currentColor" stroke-width="1.7"/><path d="M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    </div>
+    <div class="meta">
+      <h3>老板端</h3>
+      <p class="sub">工作台、货物核对、仓库、鞋子；局域网连电脑，出店走云端。</p>
+      <div class="chips">
+        <span class="chip" id="owner-ver">v0.2.57 · 73</span>
+        <span class="chip gray" id="owner-size">约 88 MB</span>
+        <span class="chip gray">Android 7.0+</span>
+      </div>
+    </div>
+  </div>
+  <a class="btn" id="owner-btn" href="https://github.com/BrllYezi/baiye-app/releases/latest/download/baiye-owner.apk" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+    下载老板端 APK
+  </a>
+</div>
+
+<div class="card">
+  <div class="app">
+    <div class="icon">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="6" y="2.5" width="12" height="19" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    </div>
+    <div class="meta">
+      <h3>员工端</h3>
+      <p class="sub">扫老板端的员工二维码登录，只读、脱敏，15 小时会话。</p>
+      <div class="chips">
+        <span class="chip" id="employee-ver">v0.2.6 · 7</span>
+        <span class="chip gray" id="employee-size">约 97 MB</span>
+        <span class="chip gray">Android 7.0+</span>
+      </div>
+    </div>
+  </div>
+  <a class="btn" id="employee-btn" href="https://github.com/BrllYezi/baiye-app/releases/latest/download/baiye-employee.apk" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+    下载员工端 APK
+  </a>
+</div>
+
+<h4 class="section">怎么装 · INSTALAR</h4>
+<div class="card">
+  <ol class="steps">
+    <li>点上面的下载按钮，等浏览器提示「已下载」。</li>
+    <li>在通知栏或「文件」里点开那个 APK。</li>
+    <li>如果提示「禁止安装未知应用」，点「设置」→ 允许来自浏览器 / 文件管理器的安装，再返回点安装。</li>
+    <li>点「安装」，覆盖安装不会删掉手机上的数据。</li>
+  </ol>
+  <p class="note">手机要是弹「应用未经过安全检测」或「Play 保护机制」，选「仍然安装」即可——这个包是我们自己签名的，没上架应用商店。</p>
+</div>
+
+<h4 class="section">版本 · VERSIONES</h4>
+<div class="card">
+  <div class="row"><span class="k">老板端</span><span class="v" id="owner-row">v0.2.57（versionCode 73）</span></div>
+  <div class="row"><span class="k">员工端</span><span class="v" id="employee-row">v0.2.6（versionCode 7）</span></div>
+  <div class="row"><span class="k">更新时间</span><span class="v" id="updated">2026-11-18</span></div>
+  <div class="row"><span class="k">安装包</span><span class="v">GitHub Releases</span></div>
+</div>
+
+<a class="btn ghost" href="https://github.com/BrllYezi/baiye-app/releases" rel="noopener" style="margin-top:4px">
+  查看历史版本与更新说明
+</a>
+
+<footer>
+  白叶零售数字化管理 · 手机端<br>
+  店里走局域网连电脑，出店自动走云端同步。<br>
+  <a href="https://github.com/BrllYezi/baiye-app" rel="noopener">github.com/BrllYezi/baiye-app</a>
+</footer>
+
+<script>
+  // 让「约 xx MB」跟着真实安装包走：能拿到 Release 资产大小就显示实际值。
+  (function () {
+    var api = 'https://api.github.com/repos/BrllYezi/baiye-app/releases/latest';
+    if (!window.fetch) return;
+    fetch(api).then(function (r) { return r.ok ? r.json() : null; }).then(function (rel) {
+      if (!rel || !rel.assets) return;
+      var map = { owner: 'owner-size', employee: 'employee-size' };
+      rel.assets.forEach(function (a) {
+        var key = a.name.indexOf('owner') >= 0 ? 'owner' : (a.name.indexOf('employee') >= 0 ? 'employee' : null);
+        if (!key) return;
+        var el = document.getElementById(map[key]);
+        if (el) el.textContent = '约 ' + Math.round(a.size / (1024 * 1024)) + ' MB';
+      });
+      if (rel.published_at) {
+        var el = document.getElementById('updated');
+        if (el) el.textContent = rel.published_at.slice(0, 10);
+      }
+    }).catch(function () {});
+  })();
+</script>
+</body>
+</html>

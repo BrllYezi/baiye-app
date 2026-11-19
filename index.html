@@ -77,6 +77,9 @@
   .btn.ghost{background:transparent;color:var(--forest);border:1.5px solid var(--line);box-shadow:none;font-weight:700}
   .btn svg{width:20px;height:20px}
   .btn small{font-weight:600;opacity:.75;font-size:12px}
+  .btnrow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+  .btnrow .btn{margin-top:0;padding:13px 10px;font-size:14px;border-radius:14px;gap:7px}
+  .btnrow .btn svg{width:17px;height:17px}
 
   .note{font-size:12.5px;color:var(--muted);margin:10px 2px 0}
   .steps{counter-reset:s;margin:6px 0 0;padding:0;list-style:none}
@@ -108,16 +111,43 @@
     <svg viewBox="0 0 24 24" fill="none"><path d="M12 3c4.5 2.4 7 6.4 7 11 0 4.4-3.1 7-7 7s-7-2.6-7-7c0-4.6 2.5-8.6 7-11z" fill="#C38A38"/><path d="M12 8v9" stroke="#153D32" stroke-width="1.6" stroke-linecap="round"/></svg>
   </div>
   <div>
-    <h1>白叶零售 · 手机端</h1>
-    <p>老板端 / 员工端 Android 安装包</p>
+    <h1>白叶零售 · 客户端下载</h1>
+    <p>PC 收银台 / 老板端 / 员工端</p>
   </div>
 </div>
 
 <div class="hero">
   <div class="tag">DESCARGAS · 下载</div>
-  <h2>点一下，<br>直接装到手机上。</h2>
-  <p>不用注册、不用找文件夹。下载好点开，允许安装未知来源即可覆盖安装，本机数据保留。</p>
+  <h2>点一下，<br>直接装到机器上。</h2>
+  <p>手机是 APK，电脑是免安装的 exe。不用注册、不用找文件夹，下载好点开就能用，覆盖安装本机数据保留。</p>
 </div>
+
+<h4 class="section">PC 收银台 · WINDOWS</h4>
+<div class="card">
+  <div class="app">
+    <div class="icon">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="4" width="19" height="13" rx="2.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 20.5h8M12 17.5v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    </div>
+    <div class="meta">
+      <h3>PC 收银端</h3>
+      <p class="sub">收银、商品、库存、小票、日结都在这里；店里所有数据的权威副本。</p>
+      <div class="chips">
+        <span class="chip" id="pc-ver">v0.6.74</span>
+        <span class="chip gray" id="pc-size">约 72 MB</span>
+        <span class="chip gray">Windows 7 / 10 / 11</span>
+      </div>
+    </div>
+  </div>
+  <div class="btnrow">
+    <a class="btn" id="pc-x64-portable" href="https://baiyepos.xyz/api/pc/download/0.6.74/x64/portable" rel="noopener">64 位 · 免安装</a>
+    <a class="btn ghost" id="pc-x64-zip" href="https://baiyepos.xyz/api/pc/download/0.6.74/x64/zip" rel="noopener">64 位 · 压缩包</a>
+    <a class="btn" id="pc-ia32-portable" href="https://baiyepos.xyz/api/pc/download/0.6.74/ia32/portable" rel="noopener">32 位 · 免安装</a>
+    <a class="btn ghost" id="pc-ia32-zip" href="https://baiyepos.xyz/api/pc/download/0.6.74/ia32/zip" rel="noopener">32 位 · 压缩包</a>
+  </div>
+  <p class="note">免安装版双击即用；压缩包解压到任意目录也一样能跑。数据存在 <code>%APPDATA%\BaiyePOS</code>，换电脑时把这个文件夹一起拷过去，账就跟着走。</p>
+</div>
+
+<h4 class="section">手机 · ANDROID</h4>
 
 <div class="card">
   <div class="app">
@@ -161,7 +191,7 @@
   </a>
 </div>
 
-<h4 class="section">怎么装 · INSTALAR</h4>
+<h4 class="section">手机怎么装 · INSTALAR</h4>
 <div class="card">
   <ol class="steps">
     <li>点上面的下载按钮，等浏览器提示「已下载」。</li>
@@ -174,6 +204,7 @@
 
 <h4 class="section">版本 · VERSIONES</h4>
 <div class="card">
+  <div class="row"><span class="k">PC 收银端</span><span class="v" id="pc-row">v0.6.74（64 位 / 32 位）</span></div>
   <div class="row"><span class="k">老板端</span><span class="v" id="owner-row">v0.2.58（versionCode 74）</span></div>
   <div class="row"><span class="k">员工端</span><span class="v" id="employee-row">v0.2.7（versionCode 8）</span></div>
   <div class="row"><span class="k">更新时间</span><span class="v" id="updated">2026-11-18</span></div>
@@ -181,8 +212,8 @@
 </div>
 
 <footer>
-  白叶零售数字化管理 · 手机端<br>
-  店里走局域网连电脑，出店自动走云端同步。<br>
+  白叶零售数字化管理 · 客户端下载<br>
+  PC 收银台放店里当主机，手机连同一个 Wi-Fi 就能查货、核对、看店。<br>
   <a href="https://baiyepos.xyz" rel="noopener">baiyepos.xyz</a>
 </footer>
 
@@ -214,6 +245,29 @@
         var el = document.getElementById('updated');
         if (el) el.textContent = newest.slice(0, 10);
       }
+    }).catch(function () {});
+
+    // PC 收银端：版本与四个下载地址都从发布记录现取。
+    fetch('https://baiyepos.xyz/api/releases/latest').then(function (r) { return r.ok ? r.json() : null; }).then(function (data) {
+      var release = data && data.release;
+      if (!release || !release.assets) return;
+      var ver = document.getElementById('pc-ver');
+      if (ver) ver.textContent = 'v' + release.version;
+      var row = document.getElementById('pc-row');
+      if (row) row.textContent = 'v' + release.version + '（64 位 / 32 位）';
+      var size = document.getElementById('pc-size');
+      var portableSize = release.assets.x64 && release.assets.x64.portable_size;
+      if (size && portableSize) size.textContent = '约 ' + Math.round(portableSize / (1024 * 1024)) + ' MB';
+      ['x64', 'ia32'].forEach(function (arch) {
+        var entry = release.assets[arch];
+        if (!entry) return;
+        ['portable', 'zip'].forEach(function (kind) {
+          var link = document.getElementById('pc-' + arch + '-' + kind);
+          if (link && entry[kind]) link.setAttribute('href', entry[kind]);
+        });
+      });
+      var updated = document.getElementById('pc-updated');
+      if (updated && release.published_at) updated.textContent = release.published_at.slice(0, 10);
     }).catch(function () {});
   })();
 </script>

@@ -139,10 +139,10 @@
     </div>
   </div>
   <div class="btnrow">
-    <a class="btn" id="pc-x64-portable" href="https://baiyepos.xyz/api/pc/download/0.6.125/x64/portable" rel="noopener">64 位 · 免安装</a>
-    <a class="btn ghost" id="pc-x64-zip" href="https://baiyepos.xyz/api/pc/download/0.6.125/x64/zip" rel="noopener">64 位 · 压缩包</a>
-    <a class="btn" id="pc-ia32-portable" href="https://baiyepos.xyz/api/pc/download/0.6.125/ia32/portable" rel="noopener">32 位 · 免安装</a>
-    <a class="btn ghost" id="pc-ia32-zip" href="https://baiyepos.xyz/api/pc/download/0.6.125/ia32/zip" rel="noopener">32 位 · 压缩包</a>
+    <a class="btn" id="pc-x64-portable" href="https://brilliantyezi.com/api/pc/download/0.6.125/x64/portable" rel="noopener">64 位 · 免安装</a>
+    <a class="btn ghost" id="pc-x64-zip" href="https://brilliantyezi.com/api/pc/download/0.6.125/x64/zip" rel="noopener">64 位 · 压缩包</a>
+    <a class="btn" id="pc-ia32-portable" href="https://brilliantyezi.com/api/pc/download/0.6.125/ia32/portable" rel="noopener">32 位 · 免安装</a>
+    <a class="btn ghost" id="pc-ia32-zip" href="https://brilliantyezi.com/api/pc/download/0.6.125/ia32/zip" rel="noopener">32 位 · 压缩包</a>
   </div>
   <p class="note">免安装版双击即用；压缩包解压到任意目录也一样能跑。数据存在 <code>%APPDATA%\BaiyePOS</code>，换电脑时把这个文件夹一起拷过去，账就跟着走。</p>
 </div>
@@ -164,7 +164,7 @@
       </div>
     </div>
   </div>
-  <a class="btn" id="owner-btn" href="https://baiyepos.xyz/api/app/download/owner" rel="noopener">
+  <a class="btn" id="owner-btn" href="https://brilliantyezi.com/api/app/download/owner" rel="noopener">
     <svg viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
     下载老板端 APK
   </a>
@@ -185,7 +185,7 @@
       </div>
     </div>
   </div>
-  <a class="btn" id="employee-btn" href="https://baiyepos.xyz/api/app/download/employee" rel="noopener">
+  <a class="btn" id="employee-btn" href="https://brilliantyezi.com/api/app/download/employee" rel="noopener">
     <svg viewBox="0 0 24 24" fill="none"><path d="M12 4v11m0 0 4-4m-4 4-4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
     下载员工端 APK
   </a>
@@ -214,13 +214,13 @@
 <footer>
   白叶零售数字化管理 · 客户端下载<br>
   PC 收银台放店里当主机，手机连同一个 Wi-Fi 就能查货、核对、看店。<br>
-  <a href="https://baiyepos.xyz" rel="noopener">baiyepos.xyz</a>
+  <a href="https://brilliantyezi.com" rel="noopener">brilliantyezi.com</a>
 </footer>
 
 <script>
   // 版本号、大小、更新时间都从自家服务器取（安装包不再放 GitHub）。
   (function () {
-    var api = 'https://baiyepos.xyz/api/app/latest';
+    var api = 'https://brilliantyezi.com/api/app/latest';
     if (!window.fetch) return;
     fetch(api).then(function (r) { return r.ok ? r.json() : null; }).then(function (data) {
       if (!data || !data.apps) return;
@@ -248,7 +248,7 @@
     }).catch(function () {});
 
     // PC 收银端：版本与四个下载地址都从发布记录现取。
-    fetch('https://baiyepos.xyz/api/releases/latest').then(function (r) { return r.ok ? r.json() : null; }).then(function (data) {
+    fetch('https://brilliantyezi.com/api/releases/latest').then(function (r) { return r.ok ? r.json() : null; }).then(function (data) {
       var release = data && data.release;
       if (!release || !release.assets) return;
       var ver = document.getElementById('pc-ver');

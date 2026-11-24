@@ -242,8 +242,12 @@
         if (app.published_at && (!newest || app.published_at > newest)) newest = app.published_at;
       });
       if (newest) {
+        // 两条 fetch 谁后到谁写，所以这里也要比一下，别把更晚的 PC 日期盖回去。
         var el = document.getElementById('updated');
-        if (el) el.textContent = newest.slice(0, 10);
+        var next = newest.slice(0, 10);
+        if (el && (!el.textContent || el.textContent === '—' || next > el.textContent)) {
+          el.textContent = next;
+        }
       }
     }).catch(function () {});
 

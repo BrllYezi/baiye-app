@@ -207,7 +207,7 @@
   <div class="row"><span class="k">PC 收银端</span><span class="v" id="pc-row">v0.6.128（64 位 / 32 位）</span></div>
   <div class="row"><span class="k">老板端</span><span class="v" id="owner-row">v0.2.122（versionCode 138）</span></div>
   <div class="row"><span class="k">员工端</span><span class="v" id="employee-row">v0.2.17（versionCode 18）</span></div>
-  <div class="row"><span class="k">更新时间</span><span class="v" id="updated">2026-11-22</span></div>
+  <div class="row"><span class="k">更新时间</span><span class="v" id="updated">—</span></div>
   <div class="row"><span class="k">安装包</span><span class="v">本站服务器</span></div>
 </div>
 
@@ -266,8 +266,14 @@
           if (link && entry[kind]) link.setAttribute('href', entry[kind]);
         });
       });
-      var updated = document.getElementById('pc-updated');
-      if (updated && release.published_at) updated.textContent = release.published_at.slice(0, 10);
+      // 更新日期：PC 发得最勤，以它为准；两条 fetch 谁后到谁写，取更晚的那个。
+      var updated = document.getElementById('updated');
+      if (updated && release.published_at) {
+        var next = release.published_at.slice(0, 10);
+        if (!updated.textContent || updated.textContent === '—' || next > updated.textContent) {
+          updated.textContent = next;
+        }
+      }
     }).catch(function () {});
   })();
 </script>

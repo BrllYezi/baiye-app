@@ -139,12 +139,10 @@
     </div>
   </div>
   <div class="btnrow">
-    <a class="btn" id="pc-x64-portable" href="https://brilliantyezi.com/api/pc/download/0.6.136/x64/portable" rel="noopener">64 位 · 免安装</a>
-    <a class="btn ghost" id="pc-x64-zip" href="https://brilliantyezi.com/api/pc/download/0.6.136/x64/zip" rel="noopener">64 位 · 压缩包</a>
-    <a class="btn" id="pc-ia32-portable" href="https://brilliantyezi.com/api/pc/download/0.6.136/ia32/portable" rel="noopener">32 位 · 免安装</a>
-    <a class="btn ghost" id="pc-ia32-zip" href="https://brilliantyezi.com/api/pc/download/0.6.136/ia32/zip" rel="noopener">32 位 · 压缩包</a>
+    <a class="btn" id="pc-x64-zip" href="https://brilliantyezi.com/api/pc/download/0.6.136/x64/zip" rel="noopener">64 位 · 压缩包</a>
+    <a class="btn" id="pc-ia32-zip" href="https://brilliantyezi.com/api/pc/download/0.6.136/ia32/zip" rel="noopener">32 位 · 压缩包</a>
   </div>
-  <p class="note">免安装版双击即用；压缩包解压到任意目录也一样能跑。数据存在 <code>%APPDATA%\BaiyePOS</code>，换电脑时把这个文件夹一起拷过去，账就跟着走。</p>
+  <p class="note">解压到任意目录即可使用（<b>路径里不要带中文</b>，否则程序会解压到系统临时目录、写不进数据）。数据存在 <code>%APPDATA%\BaiyePOS</code>，换电脑时把这个文件夹一起拷过去，账就跟着走。</p>
 </div>
 
 <h4 class="section">手机 · ANDROID</h4>
@@ -251,7 +249,7 @@
       }
     }).catch(function () {});
 
-    // PC 收银端：版本与四个下载地址都从发布记录现取。
+    // PC 收银端：版本与两个下载地址都从发布记录现取（免安装版已停发，见 STATUS 缺陷 #004）。
     fetch('https://brilliantyezi.com/api/releases/latest').then(function (r) { return r.ok ? r.json() : null; }).then(function (data) {
       var release = data && data.release;
       if (!release || !release.assets) return;
@@ -260,15 +258,13 @@
       var row = document.getElementById('pc-row');
       if (row) row.textContent = 'v' + release.version + '（64 位 / 32 位）';
       var size = document.getElementById('pc-size');
-      var portableSize = release.assets.x64 && release.assets.x64.portable_size;
-      if (size && portableSize) size.textContent = '约 ' + Math.round(portableSize / (1024 * 1024)) + ' MB';
+      var zipSize = release.assets.x64 && release.assets.x64.zip_size;
+      if (size && zipSize) size.textContent = '约 ' + Math.round(zipSize / (1024 * 1024)) + ' MB';
       ['x64', 'ia32'].forEach(function (arch) {
         var entry = release.assets[arch];
         if (!entry) return;
-        ['portable', 'zip'].forEach(function (kind) {
-          var link = document.getElementById('pc-' + arch + '-' + kind);
-          if (link && entry[kind]) link.setAttribute('href', entry[kind]);
-        });
+        var link = document.getElementById('pc-' + arch + '-zip');
+        if (link && entry.zip) link.setAttribute('href', entry.zip);
       });
       // 更新日期：PC 发得最勤，以它为准；两条 fetch 谁后到谁写，取更晚的那个。
       var updated = document.getElementById('updated');
